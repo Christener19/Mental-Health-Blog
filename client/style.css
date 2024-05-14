@@ -1,0 +1,88 @@
+/* Starting colours and univeral selectors */
+:root {
+    --btn: rgb(96, 153, 172);
+    --back: rgb(64, 23, 100);
+    --li: rgb(80, 46, 82);
+}
+
+* {
+    box-sizing: border-box;
+}
+/* Body */
+body {
+    background-image: linear-gradient(to bottom right, rgba(255, 192, 203, 0.5), var(--back));
+    color: azure;
+    scrollbar-color: purple;
+ }
+/* Image */
+ .main-image {
+    width: 40%;
+    max-width: 150px;
+}
+
+/* Header and main */
+header, main, .input-section, ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Input area */
+.input-section {
+    width: 100%;
+}
+textarea, button {
+    max-width: 500px;
+    width: 80%;
+
+}
+textarea {
+    height: 15vh;
+    margin-bottom: 1em;
+}
+button {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 0.5px black ;
+    font-weight: bold;
+    background-color: var(--btn);
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em 0;
+    cursor: pointer;
+    margin-bottom: 2.5em;
+}
+button:hover, button:focus {
+    background-color: rgb(71, 71, 133)}
+
+/* Display area */
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    width: 100%;
+    background-color: var(--li);
+    padding: 0.5em;
+    border-radius: 5px;
+    margin-bottom: 1.5em;
+    grid-column: span 1;
+}
+.liEl-contanier {
+    max-width: 625px;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 5px;
+}
+.cross {
+    grid-column: span 1;
+    position: relative;
+    top: -13px;
+    left: -10px;
+    cursor: pointer;
+    background-color: rgb(120, 120, 120);
+    border-radius: 50%;
+}
+.cross:hover {
+    background-color: rgb(241, 81, 81);
+}
