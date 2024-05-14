@@ -21,51 +21,71 @@ btn.addEventListener("click", function() {
     let inputValue = input.value
     push(blogDb, inputValue)
 
-    appendingLiItems()
-    clearInput()
+    
+clearInput()
 })
 
 // -------Fetching the database values-------
 onValue(blogDb, function(snapshot) {
+if (snapshot.exists()) {
+
 let objectToArray = Object.entries(snapshot.val())
 
 clearAllBlogItems()
 
 for (let i = 0; i < objectToArray.length; i++) {
-let displayItems = objectToArray[i]
+    let currentItem = objectToArray[i]
+        let currentItemID = currentItem[0]
+        let currentItemValue = currentItem[1]
 
-appendingLiItems(displayItems)
+appendingLiItems(currentItem)
+}
+
+} else {
+    ul.innerHTML = "No positive affirmations."
 }
 })
 
 
 // ------Functions------
+//-------Appending list items------
 function appendingLiItems(itemAdded) {
-let itemId = itemAdded[0]
+    let itemId = itemAdded[0]
 let itemValue = itemAdded[1]
 
-  ul.innerHTML += `<div class="liEl-contanier"> <li>${itemValue}</li> <img class="cross" src="assests/letter-x.png" alt=""></div>`
 
+// Creating new elements 
+let liElContainer = document.createElement("div")
+liElContainer.classList.add("liEl-contanier")
 
-const cross = document.getElementsByClassName("cross")
+let li = document.createElement("li")
+li.textContent = itemValue
 
-for (let i = 0; i < cross.length; i++) {
+let image = document.createElement("img")
+image.classList.add("cross")
+image.src = "assests/letter-x.png"
+image.alt = "White cross on gray background."
 
-cross[i].addEventListener("click", function() {
-    
-let pathToDatabase = ref(database, `blogs/${itemId}`)
-remove(pathToDatabase)
-console.log("removed")
+liElContainer.appendChild(li)
+liElContainer.appendChild(image)
+
+ul.appendChild(liElContainer)
+
+// ------Removing a blog entry-------
+image.addEventListener("click", function() {
+    let pathToDatabase = ref(database, `blogs/${itemId}`);
+    remove(pathToDatabase);
 
 })
-}
-}
+} 
 
 
+// ------Clearing input------
 function clearInput() {
     input.value = ""
 }
 
+// -----Clearing all blog items before loading page-----
 function clearAllBlogItems() {
     ul.innerHTML = ""
 }

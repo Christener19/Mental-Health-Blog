@@ -11,8 +11,8 @@
 /* Body */
 body {
     background-image: linear-gradient(to bottom right, rgba(255, 192, 203, 0.5), var(--back));
+    background-attachment: fixed;
     color: azure;
-    scrollbar-color: purple;
  }
 /* Image */
  .main-image {
@@ -20,7 +20,7 @@ body {
     max-width: 150px;
 }
 
-/* Header and main */
+/* Display flex */
 header, main, .input-section, ul{
     display: flex;
     flex-direction: column;
@@ -39,10 +39,13 @@ textarea, button {
 textarea {
     height: 15vh;
     margin-bottom: 1em;
+    border: solid 4px rgb(120, 81, 120);
+    padding: 0.5em;
+
 }
 button {
     color: rgb(255, 255, 255);
-    text-shadow: 1px 0.5px black ;
+    text-shadow: 1px 0.5px rgb(85, 21, 112) ;
     font-weight: bold;
     background-color: var(--btn);
     border: none;
@@ -55,10 +58,19 @@ button:hover, button:focus {
     background-color: rgb(71, 71, 133)}
 
 /* Display area */
-
+h2 {
+    margin-bottom: 0;
+}
+.heartbeat {
+    position: relative;
+    top: -18px;
+    max-width: 70px;
+    width: 20%;
+}
 ul {
     list-style: none;
     padding: 0;
+    margin-top: 0;
 }
 li {
     width: 100%;
@@ -67,6 +79,8 @@ li {
     border-radius: 5px;
     margin-bottom: 1.5em;
     grid-column: span 1;
+    font-family: "Indie Flower", cursive;
+    font-weight: 600;
 }
 .liEl-contanier {
     max-width: 625px;
